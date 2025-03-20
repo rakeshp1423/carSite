@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4Wheels.com - Luxury Car Showroom</title>
+    <style>
+        body {
+            font-family: "Gill Sans", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s;
+            z-index: 1000;
+            font-size: 20px;
+        }
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .nav-left {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+        }
+        .nav-center input,
+        .nav-center select {
+            padding: 15px;
+            border-radius: 40px;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            outline: none;
+        }
+        .nav-center input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .nav-center select option {
+            background: #222;
+            color: white;
+        }
+        .nav-right {
+            display: flex;
+            gap: 5px; /* Adjusted gap to move links slightly left */
+        }
+        .nav-right a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .nav-right a:hover {
+            text-decoration: underline;
+            color: #18afe6;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 1s ease-in-out, transform 2s ease-in-out;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .hero-slide::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+        }
+        .hero-slide.active .hero-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero button {
+            margin-top: 20px;
+            padding: 15px 25px;
+            font-size: 20px;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .hero button:hover {
+            background: #18afe6;
+        }
+
+        /* Sections */
+        .section {
+            padding: 50px;
+            text-align: center;
+            background-color: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Hero Section Image Slider
+        document.addEventListener("DOMContentLoaded", function () {
+            let slides = document.querySelectorAll(".hero-slide");
+            let index = 0;
+
+            function showNextSlide() {
+                slides[index].classList.remove("active");
+                index = (index + 1) % slides.length;
+                slides[index].classList.add("active");
+            }
+
+            slides[0].classList.add("active");
+            setInterval(showNextSlide, 7000); // Slower transition (7 seconds per slide)
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">4Wheels.com</div>
+        <div class="nav-center">
+            <input type="text" placeholder="Search cars...">
+            <select>
+                <option>Filter</option>
+                <option>Price</option>
+                <option>Brand</option>
+                <option>Model</option>
+            </select>
+        </div>
+        <div class="nav-right">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Login/Signup</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-slide" style="background-image: url('car1.jpg');">
+            <div class="hero-content">
+                <h1>Welcome to 4Wheels.com</h1>
+                <p>Experience Luxury, Performance, and Innovation</p>
+                <button>Get Started</button>
+            </div>
+        </div>
+        <div class="hero-slide" style="background-image: url('car2.jpg');">
+            <div class="hero-content">
+                <h1>Find Your Dream Car</h1>
+                <p>Top luxury brands available at the best prices</p>
+                <button>Explore Now</button>
+            </div>
+        </div>
+        <div class="hero-slide" style="background-image: url('car3.jpg');">
+            <div class="hero-content">
+                <h1>Drive the Future</h1>
+                <p>Latest models with cutting-edge technology</p>
+                <button>Book a Test Drive</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sections -->
+    <!-- About Us Section -->
+<div class="section">
+    <h2>🚗 About Us</h2>
+    <p><strong>Welcome to 4Wheels.com – Where Luxury Meets Performance</strong></p>
+    <p>At 4Wheels.com, we bring you the finest collection of luxury, sports, and premium vehicles. From the latest high-performance models to timeless classics, we are committed to delivering excellence.</p>
+    <p>We believe in craftsmanship, innovation, and superior customer experience. Our team of automotive experts ensures that every car we showcase meets the highest standards.</p>
+    <h3>Our Mission</h3>
+    <p>To redefine luxury car buying by offering an unparalleled selection, expert guidance, and a seamless purchasing experience.</p>
+    <h3>Our Vision</h3>
+    <p>To be the most trusted and prestigious destination for luxury automobiles.</p>
+</div>
+
+<!-- Our Collection Section -->
+<div class="section">
+    <h2>🏃 Our Collection</h2>
+    <p>🚀 <strong>Supercars & Hypercars</strong> – Ferrari, Lamborghini, McLaren, Bugatti.</p>
+    <p>💎 <strong>Luxury Sedans & SUVs</strong> – Rolls-Royce, Bentley, Mercedes-Benz, BMW, Audi.</p>
+    <p>⚡ <strong>Electric Luxury</strong> – Tesla, Porsche Taycan, Lucid Air.</p>
+    <p>🏎 <strong>Performance & Sports Cars</strong> – Porsche, Corvette, Jaguar F-Type.</p>
+    <p>🎩 <strong>Classic & Vintage Cars</strong> – Timeless masterpieces from Aston Martin, Maserati, and more.</p>
+</div>
+
+<!-- Why Choose Us Section -->
+<div class="section">
+    <h2>🌟 Why Choose Us?</h2>
+    <ul>
+        <li>🔹 <strong>Exclusive Collection</strong> – Handpicked luxury cars from the world’s top brands.</li>
+        <li>🔹 <strong>Certified Pre-Owned Selection</strong> – Verified, inspected, and backed by warranty.</li>
+        <li>🔹 <strong>Personalized Buying Experience</strong> – Expert consultations tailored to your preferences.</li>
+        <li>🔹 <strong>Luxury Test Drive Program</strong> – Feel the thrill before making a decision.</li>
+        <li>🔹 <strong>Seamless Financing & Trade-In</strong> – Hassle-free deals, competitive pricing.</li>
+        <li>🔹 <strong>Global Shipping & Delivery</strong> – Get your dream car anywhere in the world.</li>
+    </ul>
+</div>
+
+<!-- Customer Reviews Section -->
+<div class="section">
+    <h2>💬 Customer Reviews</h2>
+    <p>🎡 <strong>Arjun Mehta (Mumbai, India)</strong> - "I had an amazing experience at 4Wheels.com! The staff helped me choose the perfect Rolls-Royce, and the process was seamless. Highly recommended!"</p>
+    <p>🏃 <strong>Sarah Williams (Dubai, UAE)</strong> - "As a supercar enthusiast, I’ve visited many showrooms, but 4Wheels.com truly stands out. Their collection of Lamborghinis and McLarens is stunning!"</p>
+    <p>🔋 <strong>Ravi Sharma (Bangalore, India)</strong> - "I was looking for an electric luxury car, and the team at 4Wheels.com guided me perfectly. Love my new Tesla Model S!"</p>
+</div>
+
+<!-- Contact Us Section -->
+<div class="section">
+    <h2>📍 Contact Us</h2>
+    <p><strong>Showroom Address:</strong></p>
+    <p>4Wheels Luxury Motors Pvt. Ltd., 123 Elite Drive, New Delhi, India – 110001</p>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+    <p><strong>Email:</strong> contact@4wheels.com</p>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
