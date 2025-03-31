@@ -4,370 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4Wheels.com - Luxury Car Showroom</title>
-    <style>
-        body {
-            font-family: "Gill Sans", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-        /* Navigation Bar */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: transparent;
-            padding: 20px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: background 0.3s;
-            z-index: 1000;
-            font-size: 20px;
-        }
-        nav.scrolled {
-            background: rgba(0, 0, 0, 0.7);
-        }
-        .nav-left {
-            font-size: 28px;
-            font-weight: bold;
-            color: white;
-        }
-        .nav-center input,
-        .nav-center select {
-            padding: 15px;
-            border-radius: 40px;
-            border: 1px solid white;
-            background: transparent;
-            color: white;
-            outline: none;
-        }
-        .nav-center input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .nav-center select option {
-            background: #222;
-            color: white;
-        }
-        .nav-right {
-            display: flex;
-            gap: 5px; /* Adjusted gap to move links slightly left */
-        }
-        .nav-right a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 5px;
-            transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-        }
-        .nav-right a:hover {
-            text-decoration: underline;
-            color: #18afe6;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .hero-slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: white;
-            text-align: center;
-            font-size: 32px;
-            font-weight: bold;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: opacity 1s ease-in-out, transform 2s ease-in-out;
-        }
-        .hero-slide.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .hero-slide::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
-        }
-        .hero-slide.active .hero-content {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .hero button {
-            margin-top: 20px;
-            padding: 15px 25px;
-            font-size: 20px;
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .hero button:hover {
-            background: #18afe6;
-        }
-
-        /* Sections */
-        /* General Section Styling */
-.section {
-    padding: 50px;
-    margin: 40px auto;
-    max-width: 1100px;
-    background: transparent
-    
-    border-radius: 12px;
-    text-align: left;
- 
-}
-
-.section h2 {
-    font-size: 30px;
-    color: #222;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    position: relative;
-    padding-bottom: 8px;
-    border-bottom: 3px solid #f8b400;
-    display: inline-block;
-}
-
-.section h3 {
-    font-size: 24px;
-    color: #444;
-    font-weight: 600;
-    margin-top: 25px;
-}
-
-.section p {
-    font-size: 18px;
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 15px;
-}
-
-/* Our Collection Styling */
-.section p strong {
-    font-size: 19px;
-    color: #222;
-}
-
-.collection p {
-    background: #f5f5f5;
-    padding: 14px 20px;
-    border-radius: 8px;
-    margin: 10px 0;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px;
-}
-
-/* Why Choose Us */
-.section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.section ul li {
-    font-size: 18px;
-    color: #333;
-    background: #f9f9f9;
-    padding: 14px 20px;
-    border-radius: 8px;
-    margin: 10px 0;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-left: 5px solid #f8b400;
-    transition: all 0.3s ease-in-out;
-}
-
-.section ul li:hover {
-    background: #f1f1f1;
-    border-left: 5px solid #d99400;
-}
-
-/* Customer Reviews */
-.reviews p {
-    background: #fafafa;
-    padding: 18px;
-    border-left: 5px solid #f8b400;
-    border-radius: 8px;
-    font-style: italic;
-    font-size: 18px;
-    line-height: 1.7;
-    font-weight: 500;
-    position: relative;
-}
-
-.reviews p strong {
-    display: block;
-    color: #222;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-/* Contact Us */
-.section form {
-    margin-top: 20px;
-}
-
-.section form label {
-    display: block;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 12px 0 5px;
-    color: #333;
-}
-
-.section form input,
-.section form textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 17px;
-    background: #fafafa;
-    transition: all 0.3s ease;
-}
-
-.section form input:focus,
-.section form textarea:focus {
-    border-color: #f8b400;
-    outline: none;
-    background: #fff;
-}
-
-.section form button {
-    background: #f8b400;
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 6px;
-    text-transform: uppercase;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-
-.section form button:hover {
-    background: #d99400;
-}
-@import "https://codepen.io/cbolson/pen/rNEdgKo.css" layer(template);
-
-@layer template, demo;
-
-@layer demo {
-  .wrapper {
-    width: min(100%, 800px);
-    display: grid;
-    place-items: center;
-    gap: 1rem;
-  }
-  .wrapper > * {
-    width: 100%;
-  }
-  .cards {
-    width: min(100%, 800px);
-    font-size: 0.8rem;
-    display: grid;
-    /*    grid-template-columns: repeat(3, 1fr);*/
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-template-rows: auto 1fr auto;
-    gap: 1rem;
-  }
-
-  .cards > .card {
-    --radius: 5px;
-    --padding: 3px;
-    --radius-child: calc(var(--radius) - var(--padding));
-    grid-row: span 3;
-    padding: var(--padding);
-    border: 1px solid steelblue;
-    border-radius: var(--radius);
-    display: grid;
-    grid-template-rows: subgrid;
-    gap: 0;
-  }
-
-  .cards > .card > img {
-    width: 100%;
-    /*height: 100%;*/
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: var(--radius-child) var(--radius-child) 0 0;
-  }
-  .cards > .card > :not(img) {
-    padding-inline: 1rem;
-  }
-  .cards > .card > footer {
-    text-align: center;
-    padding-block: 1rem;
-  }
-  .cards > .card > footer > button {
-    border: 1px solid steelblue;
-    outline: none;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: light-dark(rgba(0 0 0 / 0.1), rgba(255 255 255 / 0.15));
-    transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
-
-    &:focus-visible,
-    &:hover {
-      background-color: steelblue;
-      color: white;
-    }
-    &:focus-visible {
-      outline: 1px dashed white;
-      outline-offset: 3px;
-    }
-  }
-}
-
-.footerse {
-   
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-   
-}
-
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script>
         // Navbar Scroll Effect
         window.addEventListener('scroll', function() {
@@ -435,28 +73,40 @@
         </div>
     </div>
 
+
+    <section class="about-section">
+        <div class="container">
+            <div class="row">                
+                <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
+                    <div class="inner-column">
+                        <div class="sec-title">
+                            <span class="title">About Company</span>
+                            <h2>We are leader in <br>Industrial market Since 1992</h2>
+                        </div>
+                        <div class="text">At 4Wheels.com, we bring you the finest collection of luxury, sports, and premium vehicles. From the latest high-performance models to timeless classics, we are committed to delivering excellence.</div>
+                        <ul class="list-style-one">
+                            <li>Lorem Ipsum is simply dummy tex</li>
+                            <li>Consectetur adipisicing elit</li>
+                            <li>Sed do eiusmod tempor incididunt</li>
+                        </ul>
+                        <div class="btn-box">
+                            <a href="#" class="theme-btn btn-style-one">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Column -->
+                
+            </div>
+        </div>
+    </section>
+    
     <!-- Sections -->
     <!-- About Us Section -->
-<div class="section">
-    <h2>🚗 About Us</h2>
-    <p><strong>Welcome to 4Wheels.com – Where Luxury Meets Performance</strong></p>
-    <p>At 4Wheels.com, we bring you the finest collection of luxury, sports, and premium vehicles. From the latest high-performance models to timeless classics, we are committed to delivering excellence.</p>
-    <p>We believe in craftsmanship, innovation, and superior customer experience. Our team of automotive experts ensures that every car we showcase meets the highest standards.</p>
-    <h3>Our Mission</h3>
-    <p>To redefine luxury car buying by offering an unparalleled selection, expert guidance, and a seamless purchasing experience.</p>
-    <h3>Our Vision</h3>
-    <p>To be the most trusted and prestigious destination for luxury automobiles.</p>
-</div>
+
 
 <!-- Our Collection Section -->
-<div class="section">
-    <h2>🏃 Our Collection</h2>
-    <p>🚀 <strong>Supercars & Hypercars</strong> – Ferrari, Lamborghini, McLaren, Bugatti.</p>
-    <p>💎 <strong>Luxury Sedans & SUVs</strong> – Rolls-Royce, Bentley, Mercedes-Benz, BMW, Audi.</p>
-    <p>⚡ <strong>Electric Luxury</strong> – Tesla, Porsche Taycan, Lucid Air.</p>
-    <p>🏎 <strong>Performance & Sports Cars</strong> – Porsche, Corvette, Jaguar F-Type.</p>
-    <p>🎩 <strong>Classic & Vintage Cars</strong> – Timeless masterpieces from Aston Martin, Maserati, and more.</p>
-</div>
+
 <div class="section">
 <div class="wrapper">
     <hgroup>
@@ -506,17 +156,39 @@
   </div>
 </div>
 <!-- Why Choose Us Section -->
-<div class="section">
-    <h2>🌟 Why Choose Us?</h2>
-    <ul>
-        <li>🔹 <strong>Exclusive Collection</strong> – Handpicked luxury cars from the world’s top brands.</li>
-        <li>🔹 <strong>Certified Pre-Owned Selection</strong> – Verified, inspected, and backed by warranty.</li>
-        <li>🔹 <strong>Personalized Buying Experience</strong> – Expert consultations tailored to your preferences.</li>
-        <li>🔹 <strong>Luxury Test Drive Program</strong> – Feel the thrill before making a decision.</li>
-        <li>🔹 <strong>Seamless Financing & Trade-In</strong> – Hassle-free deals, competitive pricing.</li>
-        <li>🔹 <strong>Global Shipping & Delivery</strong> – Get your dream car anywhere in the world.</li>
-    </ul>
+
+<div class="infobox-section">
+    <h1>🌟 Why Choose Us?</h1>
+    <p>Your Dream Car, Your Way – Handpicked Selection, Hassle-Free Buying, and Expert Support.</p>
+    <div class="infobox-container">
+      <div class="infobox" style="background-color: #e7edff;">
+        <div class="icon">🌿</div>
+        <h2>Exclusive Collection</h2>
+        <p>Handpicked luxury cars from the world’s top brands.</p>
+        <a href="#" class="learn-more">Learn More &rsaquo;</a>
+      </div>
+      <div class="infobox" style="background-color: #fff1e7;">
+        <div class="icon">🔍</div>
+        <h2>Certified Pre-Owned Selection
+        <p> Verified, inspected, and backed by warranty.</p>
+        <a href="#" class="learn-more">Learn More &rsaquo;</a>
+      </div>
+      <div class="infobox" style="background-color: #e7ffe7;">
+        <div class="icon">☁️</div>
+        <h2>Personalized Buying Experience
+        <p>Expert consultations tailored to your preferences.</p>
+        <a href="#" class="learn-more">Learn More &rsaquo;</a>
+      </div>
+      <div class="infobox" style="background-color: #ffe7ef;">
+        <div class="icon">🎨</div>
+        <h2>Seamless Financing & Trade-In
+        <p>Hassle-free deals, competitive pricing.
+        <a href="#" class="learn-more">Learn More &rsaquo;</a>
+      </div>
+    </div>
+
 </div>
+
 
 <!-- Customer Reviews Section -->
 <div class="section">
